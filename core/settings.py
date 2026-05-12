@@ -1,5 +1,6 @@
 from pathlib import Path
 from datetime import timedelta 
+import os
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -88,6 +89,10 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticatedOrReadOnly', 
     ],
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
+    
 }
 
 
@@ -118,3 +123,12 @@ SPECTACULAR_SETTINGS = {
         }
     },
 }
+
+
+
+
+
+
+STATIC_URL = 'static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
